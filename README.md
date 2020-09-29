@@ -1,6 +1,6 @@
 # Portfolio website
 
-**This website showcases creating a web application from the ground up **
+**This website showcases creating a web application from the ground up**
 
 ### The first day I did an intial setup 9/28/2020:
 
