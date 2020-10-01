@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import { browserHistory } from 'react-router';
+import NavBar from './NavBar';
 // import HomePage from './HomePage';
 // import NavBar from './HeaderComponent/NavBar';
 class App extends Component {
@@ -8,8 +9,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          //<NavBar />
-          <Route name="home" exact path="/" component={App} />
+          <NavBar />
+          {/* <Route name="home" exact path="/" component={NavBar} /> */}
         </div>
       </Router>
     )
