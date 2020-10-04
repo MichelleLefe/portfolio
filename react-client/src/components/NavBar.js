@@ -2,16 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+// import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import { makeStyles, Theme, createStyles, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import Slide from '@material-ui/core/Slide';
+import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
+
+const buttonStyles = {
+    buttonStyle: {
+      background: 'linear-gradient(45deg, #ff0808 30%, #871c1c 90%)',
+      borderRadius: 15,
+      border: 0,
+      color: 'white',
+      height: 60,
+      width: 300,
+      padding: '0px 60px',
+      margin: 20,
+      boxShadow: '0 3px 5px 2px rgba(255, 255, 255, .3)',
+    },
+  };
 
 const useStyles = makeStyles((theme) => ({
         root: {
@@ -47,28 +63,20 @@ function ScrollTop(props) {
     );
 }
 
-// function HideOnScroll(props) {
-//     const { children } = props;
-//     const trigger = useScrollTrigger();//
-//     return (
-//         <Slide in={!trigger}> 
-//          {children}
-//         </Slide>
-//     );
-// }
-
-export default function NavBar(props) {
+const NavBar = (props) =>{
+    const { classes, children, className } = props;
     return (
         <React.Fragment>
             <CssBaseline/>
-            {/* <HideOnScroll { ...props }> */}
                 <AppBar position="sticky">
                     <Toolbar>
-                        <Typography variant='h6'> This will be the navigation</Typography>
+                        {/* <Typography variant='h6'> This will be the navigation</Typography> */}
+                        <Button className={clsx(classes.root, className)} size="large" variant="contained" component={Link} to="/" >
+                            Home
+                        </Button>
                     </Toolbar>
                 </AppBar>
                 <Toolbar id='back-to-top-anchor'/>
-            {/* </HideOnScroll> */}
             <Container>
         <Box my={2}>
           {[...new Array(12)]
@@ -82,10 +90,12 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
         </Box>
       </Container>
       <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
+        <Fab color="grey" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
         </React.Fragment>
     );
 }
+
+export default withStyles(buttonStyles)(NavBar);
